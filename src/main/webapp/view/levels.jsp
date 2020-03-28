@@ -26,7 +26,7 @@
 
                         <div class="x_content">
 
-                            <a href="/new" class="btn btn-app"><i class="fa fa-plus-square"></i>Yeni Seviye</a>
+                            <a href="levels/new" class="btn btn-app"><i class="fa fa-plus-square"></i>Yeni Seviye</a>
 
                             <div class="table-responsive">
                                 <table class="table table-striped jambo_table">

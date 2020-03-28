@@ -9,22 +9,22 @@ import java.util.List;
 @Service
 public class LevelService {
 
-    private LevelRepository levelRepository;
+    private LevelRepository repository;
 
-    public LevelService(LevelRepository levelRepository) {
-        this.levelRepository = levelRepository;
+    public LevelService(LevelRepository repository) {
+        this.repository = repository;
     }
 
-    public LevelModel save(LevelModel levelModel) {
-        return levelRepository.save(levelModel);
+    public LevelModel save(LevelModel model) {
+        return repository.save(model);
     }
 
     public LevelModel getById(Long id) {
-        return levelRepository.findById(id).orElse(null);
+        return repository.findById(id).orElse(null);
     }
 
     public List<LevelModel> findAll() {
-        return levelRepository.findAll();
+        return repository.findAll();
     }
 
 }
