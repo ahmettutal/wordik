@@ -2,20 +2,19 @@ package com.tutal.wordik.model;
 
 import lombok.Data;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 @Data
 @Entity
 @Table(name = "LEVEL")
 public class LevelModel extends AuditModel {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-
     private String name;
 
-    private String imageUrl;
+    @OneToOne
+    private PictureModel picture;
 
     private int defaultQuestionCount;
 

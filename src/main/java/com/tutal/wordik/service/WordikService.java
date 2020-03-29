@@ -1,5 +1,6 @@
 package com.tutal.wordik.service;
 
+import com.tutal.wordik.model.PictureModel;
 import com.tutal.wordik.model.WordikModel;
 import com.tutal.wordik.repo.WordikRepository;
 import org.springframework.stereotype.Service;
@@ -16,22 +17,26 @@ public class WordikService {
 
     private WordikRepository repository;
 
-    private HttpServletRequest request;
-
     private PictureService pictureService;
 
-    public WordikService(WordikRepository repository, HttpServletRequest request, PictureService pictureService) {
+    public WordikService(WordikRepository repository, PictureService pictureService) {
         this.repository = repository;
-        this.request = request;
         this.pictureService = pictureService;
     }
 
-    public WordikModel save(WordikModel model, MultipartFile[] images) {
+    public WordikModel save(WordikModel model) {
+        return repository.save(model);
+    }
 
-        if (images != null) {
-            final String imageUrl = pictureService.saveImages(request, model, images, UPLOAD_DIR_WORDIK);
-            model.setImageUrl(imageUrl);
-        }
+    public void delete(Long id) {
+        repository.deleteById(id);
+    }
+
+    public void delete(WordikModel model) {
+        repository.delete(model);
+    }
+
+    public WordikModel save(HttpServletRequest request, WordikModel model, MultipartFile[] images) {
 
         if (Objects.isNull(model.getId())) {
             model = repository.save(model);
@@ -39,12 +44,19 @@ public class WordikService {
             WordikModel byId = repository.findById(model.getId()).orElse(new WordikModel());
 
             byId.setName(model.getName());
-            byId.setImageUrl(model.getImageUrl());
             byId.setTr(model.getTr());
             byId.setEn(model.getEn());
             byId.setDe(model.getDe());
 
             model = repository.save(byId);
+        }
+
+        if (images != null) {
+            final PictureModel picture = pictureService.saveImages(request, model.getId(), UPLOAD_DIR_WORDIK, images);
+            if (!Objects.isNull(picture)) {
+                model.setPicture(picture);
+                model = repository.save(model);
+            }
         }
 
         return model;

@@ -1,1 +1,0 @@
-INSERT INTO LEVEL (name, imageUrl, defaultQuestionCount) VALUES ('name', 'url', 1);

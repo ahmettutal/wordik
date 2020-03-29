@@ -2,15 +2,25 @@ package com.tutal.wordik.model;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @Entity
 @Table(name = "WORDIK")
 public class WordikModel extends AuditModel {
 
-    private String imageUrl;
+    @ManyToMany(cascade = {CascadeType.ALL})
+    @JoinTable(
+            name = "WORDIK_LEVEL",
+            joinColumns = {@JoinColumn(name = "wordik_id")},
+            inverseJoinColumns = {@JoinColumn(name = "level_id")}
+    )
+    private Set<LevelModel> levels = new HashSet<>();
+
+    @OneToOne
+    private PictureModel picture;
 
     private String name;
 

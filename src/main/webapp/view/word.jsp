@@ -34,6 +34,13 @@
                                 <form:hidden path="id"/>
 
                                 <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="levels"> Bağlı Olduğu Seviyeler </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <form:select path="levels" items="${levelList}" multiple="true" class="form-control col-md-7 col-xs-12"/>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="tr"> TR </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <form:input path="tr" class="form-control col-md-7 col-xs-12"/>
@@ -58,16 +65,6 @@
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12">Yeni Resim </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <input id="files" type="file" name="files" multiple/>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Yüklenen Resim </label>
-                                    <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <a href="delete-image/${word.id}}" class="btn btn-app"><i
-                                                class="fa fa-close"></i>Sil</a>
-                                        <img src="../../levelImages/${word.imageUrl}" class="img-circle profile_img"
-                                             height="75" width="75">
                                     </div>
                                 </div>
 

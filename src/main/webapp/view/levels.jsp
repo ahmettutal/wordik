@@ -32,10 +32,10 @@
                                 <table class="table table-striped jambo_table">
                                     <thead>
                                     <tr class="headings">
-                                        <th class="column-title" width="99"></th>
-                                        <%--                                        <th class="column-title" width="99"></th>--%>
-                                        <th class="column-title">İsim</th>
+                                        <th class="column-title" width="88"></th>
+                                        <th class="column-title" width="66"></th>
                                         <th class="column-title">Resim</th>
+                                        <th class="column-title">İsim</th>
                                         <th class="column-title">Varsayılan Soru Sayısı</th>
                                     </tr>
                                     </thead>
@@ -45,11 +45,14 @@
                                     <c:forEach var="level" items="${levels}">
 
                                         <tr class="even pointer">
-                                            <td><a href="categories/${level.id}"><i class="fa fa-edit"></i> Düzenle</a>
+                                            <td><a href="levels/${level.id}"><i class="fa fa-edit"></i> Düzenle</a></td>
+                                            <td><a href="levels/delete/${level.id}"><i class="fa fa-remove"></i> Sil</a></td>
+                                            <td>
+                                                <c:if test="${level.picture != null}">
+                                                    <img src="../../level/${level.id}/${level.picture.name}" height="75">
+                                                </c:if>
                                             </td>
-                                                <%--<td><a href="categories/delete/${category.id}"><i class="fa fa-remove"></i> Sil</a></td>--%>
                                             <td><c:out value="${level.name}"/></td>
-                                            <td><c:out value="${level.imageUrl}"/></td>
                                             <td><c:out value="${level.defaultQuestionCount}"/></td>
                                         </tr>
 

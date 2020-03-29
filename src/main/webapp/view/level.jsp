@@ -34,29 +34,23 @@
                                 <form:hidden path="id"/>
 
                                 <div class="form-group">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Seviye
-                                        İsmi</label>
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Seviye İsmi</label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <form:input path="name" class="form-control col-md-7 col-xs-12"/>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Resim
-                                        Yükle </label>
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="defaultQuestionCount">Varsayılan Soru Sayısı</label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input id="files" type="file" name="files"/>
+                                        <form:input path="defaultQuestionCount" class="form-control col-md-7 col-xs-12"/>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Yüklenen
-                                        Resim </label>
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Resim Yükle </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <a href="delete-image/${level.id}}" class="btn btn-app"><i
-                                                class="fa fa-close"></i>Sil</a>
-                                        <img src="../../levelImages/${level.imageUrl}" class="img-circle profile_img"
-                                             height="75" width="75">
+                                        <input id="files" type="file" name="files"/>
                                     </div>
                                 </div>
 
@@ -64,8 +58,7 @@
 
                                 <div class="form-group">
                                     <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                                        <button class="btn btn-primary" type="button" onclick="history.go(-1);">İptal
-                                        </button>
+                                        <button class="btn btn-primary" type="button" onclick="history.go(-1);">İptal</button>
                                         <button type="submit" class="btn btn-success">Kaydet</button>
                                     </div>
                                 </div>

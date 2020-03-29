@@ -32,8 +32,8 @@
                                 <table class="table table-striped jambo_table">
                                     <thead>
                                     <tr class="headings">
-                                        <th class="column-title" width="99"></th>
-                                        <th class="column-title" width="99"></th>
+                                        <th class="column-title" width="88"></th>
+                                        <th class="column-title" width="66"></th>
                                         <th class="column-title">Resim</th>
                                         <th class="column-title">TR</th>
                                         <th class="column-title">EN</th>
@@ -50,7 +50,11 @@
                                             </td>
                                             <td><a href="words/delete/${word.id}"><i class="fa fa-remove"></i> Sil</a>
                                             </td>
-                                            <td><c:out value="${word.imageUrl}"/></td>
+                                            <td>
+                                                <c:if test="${word.picture != null}">
+                                                    <img src="../../wordik/${word.id}/${word.picture.name}" height="75">
+                                                </c:if>
+                                            </td>
                                             <td><c:out value="${word.tr}"/></td>
                                             <td><c:out value="${word.en}"/></td>
                                             <td><c:out value="${word.de}"/></td>
