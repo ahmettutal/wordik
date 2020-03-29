@@ -36,7 +36,8 @@
                                 <div class="form-group">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="levels"> Bağlı Olduğu Seviyeler </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <form:select path="levels" items="${levelList}" multiple="true" class="form-control col-md-7 col-xs-12"/>
+                                        <form:select path="levels" items="${levelList}" itemLabel="name" multiple="true"
+                                                     class="form-control col-md-7 col-xs-12"/>
                                     </div>
                                 </div>
 
@@ -58,6 +59,55 @@
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="de"> DE </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <form:input path="de" class="form-control col-md-7 col-xs-12"/>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="tr"> FR </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <form:input path="fr" class="form-control col-md-7 col-xs-12"/>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="en"> SP </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <form:input path="sp" class="form-control col-md-7 col-xs-12"/>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="de"> IT </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <form:input path="it" class="form-control col-md-7 col-xs-12"/>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="tr"> RU </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <form:input path="ru" class="form-control col-md-7 col-xs-12"/>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="en"> AR </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <form:input path="ar" class="form-control col-md-7 col-xs-12"/>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="de"> PT </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <form:input path="pt" class="form-control col-md-7 col-xs-12"/>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="de"> JA </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <form:input path="ja" class="form-control col-md-7 col-xs-12"/>
                                     </div>
                                 </div>
 

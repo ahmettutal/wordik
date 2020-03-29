@@ -35,9 +35,17 @@
                                         <th class="column-title" width="88"></th>
                                         <th class="column-title" width="66"></th>
                                         <th class="column-title">Resim</th>
+                                        <th class="column-title">Bağlı Olduğu Seviyeler</th>
                                         <th class="column-title">TR</th>
                                         <th class="column-title">EN</th>
                                         <th class="column-title">DE</th>
+                                        <th class="column-title">FR</th>
+                                        <th class="column-title">SP</th>
+                                        <th class="column-title">IT</th>
+                                        <th class="column-title">RU</th>
+                                        <th class="column-title">AR</th>
+                                        <th class="column-title">PT</th>
+                                        <th class="column-title">JA</th>
                                     </tr>
                                     </thead>
 
@@ -55,9 +63,17 @@
                                                     <img src="../../wordik/${word.id}/${word.picture.name}" height="75">
                                                 </c:if>
                                             </td>
+                                            <td><c:out value="${word.levelNames}"/></td>
                                             <td><c:out value="${word.tr}"/></td>
                                             <td><c:out value="${word.en}"/></td>
                                             <td><c:out value="${word.de}"/></td>
+                                            <td><c:out value="${word.fr}"/></td>
+                                            <td><c:out value="${word.sp}"/></td>
+                                            <td><c:out value="${word.it}"/></td>
+                                            <td><c:out value="${word.ru}"/></td>
+                                            <td><c:out value="${word.ar}"/></td>
+                                            <td><c:out value="${word.pt}"/></td>
+                                            <td><c:out value="${word.ja}"/></td>
                                         </tr>
 
                                     </c:forEach>

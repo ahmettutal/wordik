@@ -1,5 +1,6 @@
 package com.tutal.wordik.controller;
 
+import com.tutal.wordik.model.LevelModel;
 import com.tutal.wordik.model.WordikModel;
 import com.tutal.wordik.service.LevelService;
 import com.tutal.wordik.service.PictureService;
@@ -10,8 +11,12 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import static com.tutal.wordik.util.Constants.UPLOAD_DIR_WORDIK;
+import static org.springframework.util.CollectionUtils.isEmpty;
 
 @Controller
 @RequestMapping("/words")
@@ -36,7 +41,17 @@ public class WordController {
     @GetMapping
     public String findAll(Model model) {
 
-        model.addAttribute("words", service.findAll());
+        final List<WordikModel> wordiks = service.findAll();
+
+        if (!isEmpty(wordiks)) {
+            wordiks.forEach(wordik -> {
+                final Set<LevelModel> levels = wordik.getLevels();
+                if (!isEmpty(levels)) {
+                    wordik.setLevelNames(levels.stream().map(LevelModel::getName).collect(Collectors.joining(" - ")));
+                }
+            });
+        }
+        model.addAttribute("words", wordiks);
 
         return "words";
     }

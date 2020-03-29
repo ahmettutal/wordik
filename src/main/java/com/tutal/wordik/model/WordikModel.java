@@ -44,4 +44,7 @@ public class WordikModel extends AuditModel {
 
     private String ja;
 
+    @Transient
+    private String levelNames;
+
 }

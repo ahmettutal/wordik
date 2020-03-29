@@ -7,7 +7,7 @@ import javax.persistence.Table;
 
 @Data
 @Entity
-@Table(name = "PICTURES")
+@Table(name = "PICTURE")
 public class PictureModel extends AuditModel {
 
     private String name;

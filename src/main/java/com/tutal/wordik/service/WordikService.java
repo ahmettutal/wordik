@@ -47,6 +47,13 @@ public class WordikService {
             byId.setTr(model.getTr());
             byId.setEn(model.getEn());
             byId.setDe(model.getDe());
+            byId.setFr(model.getFr());
+            byId.setSp(model.getSp());
+            byId.setIt(model.getIt());
+            byId.setRu(model.getRu());
+            byId.setAr(model.getAr());
+            byId.setPt(model.getPt());
+            byId.setJa(model.getJa());
 
             model = repository.save(byId);
         }
