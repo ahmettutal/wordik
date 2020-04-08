@@ -1,0 +1,63 @@
+spring:
+  application:
+    name: wordik
+  mvc:
+    view:
+      prefix: /view/
+      suffix: .jsp
+  servlet:
+    multipart:
+      enabled: true
+      file-size-threshold: 2KB
+      max-file-size: 200MB
+      max-request-size: 215MB
+  data:
+    jpa.repositories.enabled: true
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/wordik
+    validationQuery: SELECT 1
+    username: postgres
+    password:
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    properties:
+      hibernate:
+        show_sql: false
+        jdbc:
+          lob:
+            non-contextual-creation: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        temp:
+          use_jdbc_metadata_defaults: false
+        enable_lazy_load_no_trans: true
+    hibernate:
+      ddl-auto: validate
+      naming:
+        physical-strategy: com.tutal.wordik.repo.NamingStrategy
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      maximum-pool-size: 20
+      minimum-idle: 1
+      idle-timeout: 300000
+      pool-name: WORDIK_CONN_POOL
+      connection-timeout: 30000
+      max-lifetime: 1200000
+      auto-commit: true
+
+logging:
+  pattern:
+    console: "%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}}"
+    file: "%d{yyyy-MM-dd HH:mm:ss.SSS} ${LOG_LEVEL_PATTERN:-%5p} ${PID:- } --- [%t] %-40.40logger{39} : %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}}"
+  level:
+    ROOT: ERROR
+    org.apache.http: ERROR
+    com.netflix: ERROR
+    sun.rmi.transport.tcp: ERROR
+    org.springframework: INFO
+    org.hibernate: INFO
+    org.apache.tomcat.util: INFO
+    com.zaxxer.hikari: INFO
+
+server:
+  port: 8081
