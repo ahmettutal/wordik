@@ -73,7 +73,6 @@ public class PictureService {
 
     public void deletePic(HttpServletRequest request, Long id, PictureModel picture, String uploadDir) {
         try {
-
             if (picture == null) return;
 
             repository.delete(picture);
@@ -88,6 +87,15 @@ public class PictureService {
         } catch (Exception e) {
             System.out.printf("deletePic e:" + e.getMessage(), e);
         }
+    }
+
+    public String getImageSrc(HttpServletRequest request, Long id, PictureModel picture, String uploadDir) {
+
+        if (picture == null) return "";
+
+        String uploadFolder = request.getServletContext().getRealPath(uploadDir);
+
+        return uploadFolder + id + File.separator + picture.getName();
     }
 
 }

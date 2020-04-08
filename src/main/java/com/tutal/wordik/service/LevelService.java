@@ -1,16 +1,19 @@
 package com.tutal.wordik.service;
 
 import com.tutal.wordik.model.LevelModel;
+import com.tutal.wordik.model.LevelResource;
 import com.tutal.wordik.model.PictureModel;
 import com.tutal.wordik.repo.LevelRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 import static com.tutal.wordik.util.Constants.UPLOAD_DIR_LEVEL;
+import static java.util.Objects.isNull;
+import static org.springframework.util.CollectionUtils.isEmpty;
 
 @Service
 public class LevelService {
@@ -19,9 +22,34 @@ public class LevelService {
 
     private PictureService pictureService;
 
-    public LevelService(LevelRepository repository, PictureService pictureService) {
+    private HttpServletRequest request;
+
+    public LevelService(LevelRepository repository, PictureService pictureService, HttpServletRequest request) {
         this.repository = repository;
         this.pictureService = pictureService;
+        this.request = request;
+    }
+
+    public List<LevelResource> getLevels() {
+
+        final List<LevelModel> levelModels = repository.findAll();
+
+        if (isEmpty(levelModels)) {
+            return new ArrayList<>();
+        }
+
+        List<LevelResource> resources = new ArrayList<>();
+        for (LevelModel levelModel : levelModels) {
+
+            LevelResource resource = new LevelResource();
+            resource.setName(levelModel.getName());
+            resource.setDefaultQuestionCount(levelModel.getDefaultQuestionCount());
+            resource.setImageSrc(pictureService.getImageSrc(request, levelModel.getId(), levelModel.getPicture(), UPLOAD_DIR_LEVEL));
+
+            resources.add(resource);
+        }
+
+        return resources;
     }
 
     public LevelModel save(LevelModel model) {
@@ -38,7 +66,7 @@ public class LevelService {
 
     public LevelModel save(HttpServletRequest request, LevelModel model, MultipartFile[] images) {
 
-        if (Objects.isNull(model.getId())) {
+        if (isNull(model.getId())) {
             model = repository.save(model);
         } else {
             LevelModel byId = repository.findById(model.getId()).orElse(new LevelModel());
