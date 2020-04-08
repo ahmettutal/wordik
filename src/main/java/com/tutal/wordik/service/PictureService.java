@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.util.Objects;
 
+import static com.tutal.wordik.util.Constants.DOMAIN;
+
 @Service
 public class PictureService {
 
@@ -89,13 +91,11 @@ public class PictureService {
         }
     }
 
-    public String getImageSrc(HttpServletRequest request, Long id, PictureModel picture, String uploadDir) {
+    public String getImageSrc(Long id, PictureModel picture, String uploadDir) {
 
         if (picture == null) return "";
 
-        String uploadFolder = request.getServletContext().getRealPath(uploadDir);
-
-        return uploadFolder + id + File.separator + picture.getName();
+        return DOMAIN + uploadDir + id + File.separator + picture.getName();
     }
 
 }

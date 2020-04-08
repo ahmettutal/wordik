@@ -60,7 +60,7 @@
                                             </td>
                                             <td>
                                                 <c:if test="${word.picture != null}">
-                                                    <img src="../../wordik/${word.id}/${word.picture.name}" height="75">
+                                                    <img src="../../wordikImages${word.id}/${word.picture.name}" height="75">
                                                 </c:if>
                                             </td>
                                             <td><c:out value="${word.levelNames}"/></td>

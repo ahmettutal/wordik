@@ -49,7 +49,7 @@
                                             <td><a href="levels/delete/${level.id}"><i class="fa fa-remove"></i> Sil</a></td>
                                             <td>
                                                 <c:if test="${level.picture != null}">
-                                                    <img src="../../level/${level.id}/${level.picture.name}" height="75">
+                                                    <img src="../../levelImages/${level.id}/${level.picture.name}" height="75">
                                                 </c:if>
                                             </td>
                                             <td><c:out value="${level.name}"/></td>

@@ -22,12 +22,9 @@ public class LevelService {
 
     private PictureService pictureService;
 
-    private HttpServletRequest request;
-
-    public LevelService(LevelRepository repository, PictureService pictureService, HttpServletRequest request) {
+    public LevelService(LevelRepository repository, PictureService pictureService) {
         this.repository = repository;
         this.pictureService = pictureService;
-        this.request = request;
     }
 
     public List<LevelResource> getLevels() {
@@ -44,7 +41,7 @@ public class LevelService {
             LevelResource resource = new LevelResource();
             resource.setName(levelModel.getName());
             resource.setDefaultQuestionCount(levelModel.getDefaultQuestionCount());
-            resource.setImageSrc(pictureService.getImageSrc(request, levelModel.getId(), levelModel.getPicture(), UPLOAD_DIR_LEVEL));
+            resource.setImageSrc(pictureService.getImageSrc(levelModel.getId(), levelModel.getPicture(), UPLOAD_DIR_LEVEL));
 
             resources.add(resource);
         }
