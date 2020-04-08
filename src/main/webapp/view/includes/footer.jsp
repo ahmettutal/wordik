@@ -4,7 +4,7 @@
 <footer>
 
     <div class="pull-right">
-        Tutal Balıkçılık
+        Wordik
     </div>
 
     <div class="clearfix"></div>

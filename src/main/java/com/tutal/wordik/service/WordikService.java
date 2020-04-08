@@ -43,6 +43,7 @@ public class WordikService {
         } else {
             WordikModel byId = repository.findById(model.getId()).orElse(new WordikModel());
 
+            byId.setLevels(model.getLevels());
             byId.setName(model.getName());
             byId.setTr(model.getTr());
             byId.setEn(model.getEn());
