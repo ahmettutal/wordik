@@ -60,4 +60,4 @@ logging:
     com.zaxxer.hikari: INFO
 
 server:
-  port: 8081
+  port: 80
