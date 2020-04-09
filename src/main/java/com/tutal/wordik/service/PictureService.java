@@ -2,8 +2,8 @@ package com.tutal.wordik.service;
 
 import com.tutal.wordik.model.PictureModel;
 import com.tutal.wordik.repo.PictureRepository;
+import com.tutal.wordik.util.StringUtils;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
@@ -29,7 +29,7 @@ public class PictureService {
 
             try {
 
-                String fileName = StringUtils.cleanPath(image.getOriginalFilename());
+                String fileName = StringUtils.prepareFileName(image.getOriginalFilename());
 
                 String uploadFolder = getUploadFolder(request, uploadDir, id);
 

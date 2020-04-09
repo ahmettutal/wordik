@@ -1,5 +1,6 @@
 package com.tutal.wordik.service;
 
+import com.tutal.wordik.mapper.LevelMapper;
 import com.tutal.wordik.model.LevelModel;
 import com.tutal.wordik.model.LevelResource;
 import com.tutal.wordik.model.PictureModel;
@@ -22,9 +23,12 @@ public class LevelService {
 
     private PictureService pictureService;
 
-    public LevelService(LevelRepository repository, PictureService pictureService) {
+    private LevelMapper levelMapper;
+
+    public LevelService(LevelRepository repository, PictureService pictureService, LevelMapper levelMapper) {
         this.repository = repository;
         this.pictureService = pictureService;
+        this.levelMapper = levelMapper;
     }
 
     public List<LevelResource> getLevels() {
@@ -38,9 +42,7 @@ public class LevelService {
         List<LevelResource> resources = new ArrayList<>();
         for (LevelModel levelModel : levelModels) {
 
-            LevelResource resource = new LevelResource();
-            resource.setName(levelModel.getName());
-            resource.setDefaultQuestionCount(levelModel.getDefaultQuestionCount());
+            LevelResource resource = levelMapper.toLevelResource(levelModel);
             resource.setImageSrc(pictureService.getImageSrc(levelModel.getId(), levelModel.getPicture(), UPLOAD_DIR_LEVEL));
 
             resources.add(resource);

@@ -1,5 +1,6 @@
 package com.tutal.wordik.service;
 
+import com.tutal.wordik.mapper.WordikMapper;
 import com.tutal.wordik.model.PictureModel;
 import com.tutal.wordik.model.WordikModel;
 import com.tutal.wordik.model.WordikResource;
@@ -13,6 +14,7 @@ import java.util.List;
 import java.util.Objects;
 
 import static com.tutal.wordik.util.Constants.UPLOAD_DIR_WORDIK;
+import static org.springframework.util.CollectionUtils.isEmpty;
 
 @Service
 public class WordikService {
@@ -21,9 +23,12 @@ public class WordikService {
 
     private PictureService pictureService;
 
-    public WordikService(WordikRepository repository, PictureService pictureService) {
+    private WordikMapper wordikMapper;
+
+    public WordikService(WordikRepository repository, PictureService pictureService, WordikMapper wordikMapper) {
         this.repository = repository;
         this.pictureService = pictureService;
+        this.wordikMapper = wordikMapper;
     }
 
     public WordikModel save(WordikModel model) {
@@ -81,6 +86,22 @@ public class WordikService {
     }
 
     public List<WordikResource> getWords(Long levelId, String source, String target) {
-        return new ArrayList<>();
+
+        final List<WordikModel> wordikModels = repository.findAll();
+
+        if (isEmpty(wordikModels)) {
+            return new ArrayList<>();
+        }
+
+        List<WordikResource> resources = new ArrayList<>();
+        for (WordikModel wordikModel : wordikModels) {
+
+            WordikResource resource = wordikMapper.toWordikResource(wordikModel);
+            resource.setImageSrc(pictureService.getImageSrc(wordikModel.getId(), wordikModel.getPicture(), UPLOAD_DIR_WORDIK));
+
+            resources.add(resource);
+        }
+
+        return resources;
     }
 }
