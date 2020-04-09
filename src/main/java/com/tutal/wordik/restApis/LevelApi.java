@@ -8,11 +8,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import java.util.List;
 
 @ApiRestController
-public class WordikResource {
+public class LevelApi {
 
     private LevelService levelService;
 
-    public WordikResource(LevelService levelService) {
+    public LevelApi(LevelService levelService) {
         this.levelService = levelService;
     }
 
@@ -21,6 +21,5 @@ public class WordikResource {
 
         return levelService.getLevels();
     }
-
 
 }

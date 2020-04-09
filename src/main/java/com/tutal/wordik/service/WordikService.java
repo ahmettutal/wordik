@@ -2,11 +2,13 @@ package com.tutal.wordik.service;
 
 import com.tutal.wordik.model.PictureModel;
 import com.tutal.wordik.model.WordikModel;
+import com.tutal.wordik.model.WordikResource;
 import com.tutal.wordik.repo.WordikRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -78,4 +80,7 @@ public class WordikService {
         return repository.findAll();
     }
 
+    public List<WordikResource> getWords(Long levelId, String source, String target) {
+        return new ArrayList<>();
+    }
 }

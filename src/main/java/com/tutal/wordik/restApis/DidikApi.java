@@ -9,11 +9,11 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/didikle")
-public class DidikResource {
+public class DidikApi {
 
     private DidikService didikService;
 
-    public DidikResource(DidikService didikService) {
+    public DidikApi(DidikService didikService) {
         this.didikService = didikService;
     }
 
